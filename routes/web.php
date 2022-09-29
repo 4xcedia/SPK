@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\KasController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,13 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
 
-Route::get('/about', function () {
-    return view('/layouts/main');
-});
-Route::get('/blog', function () {
-    return view('pots');
-});
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);
+
+Route::get('/', [KasController::class, 'index'])->name('home')->middleware('auth');
