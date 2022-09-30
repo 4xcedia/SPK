@@ -19,10 +19,10 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
  
-            return redirect()->intended('/home');
+            return redirect()->intended('/');
         }
  
-        return back()->with('loginError','The provided credentials do not match our records.');
+        return back()->with('loginError','Email Atau Password Salah');
     }
     public function logout(Request $request){
         Auth::logout();

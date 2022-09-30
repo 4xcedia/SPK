@@ -15,10 +15,51 @@
     <script src="https://kit.fontawesome.com/fca79df33b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/extensions/simple-datatables/style.css">
     <link rel="stylesheet" href="assets/css/pages/simple-datatables.css">
+    <link rel="stylesheet" href="assets/extensions/choices.js/public/assets/styles/choices.css">
+    
 
 </head>
 
 <body>
+    <div id="main" class="layout-horizontal">
+        <header class="mb-5">
+            <div class="header-top">
+                <div class="container">
+                    <div class="logo">
+                    </div>
+                    <div class="header-top-right">
+
+                        <div class="dropdown">
+                            <a href="#" id="topbarUserDropdown"
+                                class="user-dropdown d-flex align-items-center dropend dropdown-toggle "
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="avatar avatar-md2">
+                                    <img src="assets/images/faces/1.jpg" alt="Avatar">
+                                </div>
+                                <div class="text">
+                                    <h6 class="user-dropdown-name">{{ Auth::user()->name }}</h6>
+                                    <p class="user-dropdown-status text-sm text-muted">{{ Auth::user()->is_admin == 1 ? "Administrator" : "Guest" }}</p>
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end shadow-lg"
+                                aria-labelledby="topbarUserDropdown">
+                                    <a href="/logout" class="dropdown-item" type="submit">
+                                        <i class="fa-solid fa-right-from-bracket"></i>
+                                        <span>Logout</span>
+                                    </a>
+                                </form>
+                            </ul>
+                        </div>
+
+                        <!-- Burger button responsive -->
+                        <a href="#" class="burger-btn d-block d-xl-none">
+                            <i class="bi bi-justify fs-3"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
     <div id="app">
         <div id="sidebar" class="active">
             <div class="sidebar-wrapper active">
@@ -56,29 +97,24 @@
                                 </path>
                             </svg>
                         </div>
-                        <div class="sidebar-toggler  x">
-                            <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
-                        </div>
+                        
                     </div>
                 </div>
                 <div class="sidebar-menu">
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
 
-                        <li class="sidebar-item active ">
-                            <a href="index.html" class='sidebar-link'>
+                        <li class="sidebar-item active">
+                            <a href="/" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <form action="/logout" method="POST">
-                                @csrf
-                                <button class="btn sidebar-link" type="submit">
-                                    <i class="fa-solid fa-right-from-bracket"></i>
-                                    <span>Logout</span>
-                                </button>
-                            </form>
+                            <a  href="/logout" class='sidebar-link'>
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                <span>Logout</span>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -96,6 +132,8 @@
     <script src="assets/js/pages/dashboard.js"></script>
     <script src="assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
     <script src="assets/js/pages/simple-datatables.js"></script>
+    <script src="assets/extensions/choices.js/public/assets/scripts/choices.js"></script>
+    <script src="assets/js/pages/form-element-select.js"></script>
 </body>
 
 </html>

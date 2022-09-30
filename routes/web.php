@@ -18,6 +18,8 @@ use App\Http\Controllers\KasController;
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 
 Route::post('/login', [LoginController::class, 'authenticate']);
-Route::post('/logout', [LoginController::class, 'logout']);
+Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::get('/', [KasController::class, 'index'])->name('home')->middleware('auth');
+Route::post('/tambah_data', [KasController::class, 'tambah_data'])->name('tambah_data')->middleware('auth');
+Route::get('/hapus_kas/{id}', [KasController::class, 'hapus_kas'])->name('hapus.kas')->middleware('auth');

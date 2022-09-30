@@ -17,9 +17,11 @@ class CreateKasTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->text('deskripsi');
             $table->double('nilai','14','4');
             $table->boolean('status')->default(false);
-            $table->timestamp('created_at')->nullable();
+            $table->timestamps();
+            $table->boolean('delete')->default(false);
         });
     }
 
