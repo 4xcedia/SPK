@@ -22,6 +22,8 @@ class CreateKasTable extends Migration
             $table->boolean('status')->default(false);
             $table->timestamps();
             $table->boolean('delete')->default(false);
+            $table->integer('delete_by')->nullable();
+            $table->softDeletes($column = 'deleted_at', $precision = 0);
         });
     }
 
