@@ -25,3 +25,4 @@ Route::get('/log_hapus', [KasController::class, 'log_hapus'])->name('log_hapus')
 Route::post('/tambah_data', [KasController::class, 'tambah_data'])->name('tambah_data')->middleware('auth');
 Route::get('/hapus_kas/{id}', [KasController::class, 'hapus_kas'])->name('hapus.kas')->middleware('auth');
 Route::get('/undo_kas/{id}', [KasController::class, 'undo_kas'])->name('hapus.kas')->middleware('auth');
+Route::get('/bot', [KasController::class, 'test_bot'])->name('test_bot.kas')->middleware('auth');
