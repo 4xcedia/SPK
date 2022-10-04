@@ -39,7 +39,7 @@ class KasController extends Controller
         $status = $request->status == 0 ? "Pemasukan" : "Pengeluaran";
         $text = "Terdapat ".$status." Sebesar : Rp. ".format_decimal($request->nilai)."\nSisa Saldo : Rp. ".format_decimal($saldo)."\nTanggal : ".date_formatted(now(),"d-F-Y H:i:s");
         Telegram::sendMessage([
-            'chat_id' => '-696404782',
+            'chat_id' => '-842341411',
             'parse_mode' => 'HTML',
             'text' => $text
         ]);
@@ -55,7 +55,7 @@ class KasController extends Controller
         $saldo = Kas::where('delete','!=','1')->where('status','0')->get(['nilai'])->sum('nilai') - Kas::where('delete','!=','1')->where('status','1')->get(['nilai'])->sum('nilai');
         $text = Auth::user()->name." berhasil menghapus data \nSisa Saldo : Rp. ".format_decimal($saldo)."\nTanggal : ".date_formatted(now(),"d-F-Y H:i:s");
         Telegram::sendMessage([
-            'chat_id' => '-696404782',
+            'chat_id' => '-842341411',
             'parse_mode' => 'HTML',
             'text' => $text
         ]);
@@ -76,7 +76,7 @@ class KasController extends Controller
         $saldo = Kas::where('delete','!=','1')->where('status','0')->get(['nilai'])->sum('nilai') - Kas::where('delete','!=','1')->where('status','1')->get(['nilai'])->sum('nilai');
         $text = Auth::user()->name." berhasil memulihkan data \nSisa Saldo : Rp. ".format_decimal($saldo)."\nTanggal : ".date_formatted(now(),"d-F-Y H:i:s");
         Telegram::sendMessage([
-            'chat_id' => '-696404782',
+            'chat_id' => '-842341411',
             'parse_mode' => 'HTML',
             'text' => $text
         ]);
@@ -88,7 +88,7 @@ class KasController extends Controller
         // $status = $request == 1 ? "Pemasukan" : "Pengeluaran";
         // $text = "Terdapat ".$status." Sebesar : Rp. ".format_decimal(100000)."\nSisa Saldo : Rp. ".format_decimal($saldo);
         // Telegram::sendMessage([
-        //     'chat_id' => '-696404782',
+        //     'chat_id' => '-842341411',
         //     'parse_mode' => 'HTML',
         //     'text' => $text
         // ]);
